@@ -14,8 +14,10 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  triangleSides = [a, b, c].sort
+  fail TriangleError, "The length of greatest triangle side couldn't be the same or more than sum of two others" if triangleSides[0] + triangleSides[1] <= triangleSides[-1]
+  triangleSides = triangleSides.uniq
   triangleType = { 1 => :equilateral, 2 => :isosceles, 3 => :scalene }
-  triangleSides = [a, b, c].uniq
   triangleType[triangleSides.size]
 end
 
